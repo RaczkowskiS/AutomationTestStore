@@ -1,0 +1,19 @@
+# Node.js dependencies
+node_modules/
+
+# Playwright artifacts
+test-results/
+playwright-report/
+allure-results/
+allure-report/
+
+# VSCode settings (ignore all, except debugger config if chcesz)
+.vscode/
+# !.vscode/launch.json
+
+# System / OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
