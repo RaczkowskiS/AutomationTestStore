@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
@@ -5,7 +8,7 @@ export default defineConfig({
   reporter: 'list',
   use: {
     trace: 'retain-on-failure',
-    baseURL: process.env.APP_BASE_URL ?? 'https://automationteststore.com',
+    baseURL: process.env.APP_BASE_URL,
     headless: true,
   },
   projects: [
