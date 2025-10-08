@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 
-import { BasePage } from './BasePage';
+import { BasePage } from './base.page';
 import { Routes } from '../config/routes';
 
 export class HomePage extends BasePage {
