@@ -11,9 +11,20 @@ export class HomePage extends BasePage {
   }
 
   async expectLoaded(): Promise<void> {
-      await super.expectLoaded();
+    await super.expectLoaded();
 
-      var logoElement = this.page.locator('//a[@class="logo"]');
-      await expect(logoElement).toBeVisible();
+    const logoElement = this.page.locator('//a[@class="logo"]');
+    await expect(logoElement).toBeVisible();
+  }
+
+  async isUserLoggedIn(userName: string): Promise<boolean> {
+    const userNameElement = this.page.locator(".subtext");
+
+    if (await userNameElement.isVisible()) {
+      const loggedUserName = await userNameElement.innerText();
+      return loggedUserName == userName;
+    }
+    
+    return false;
   }
 }

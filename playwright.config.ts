@@ -9,7 +9,7 @@ export default defineConfig({
   use: {
     trace: 'retain-on-failure',
     baseURL: process.env.APP_BASE_URL,
-    headless: true,
+    headless: false,
   },
   projects: [
     {

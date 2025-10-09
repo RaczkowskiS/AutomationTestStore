@@ -7,7 +7,7 @@ test('should generate token for existing user', async () => {
     const restClient = await RestClient.create();
     const requestBody =
         {
-            userName: users.user1.userName,
+            userName: users.user1.login,
             password: users.user1.password
         }
     const response = await restClient.post(AccountClient.generateTokenUrl, requestBody);
@@ -44,7 +44,7 @@ test('should return status failed for not existing user', async () => {
 test('should return token model for existing user', async () => {
     const accountClient = await AccountClient.create();
     const user = users.user1;
-    const tokenResponse = await accountClient.generateToken(user.userName, user.password);
+    const tokenResponse = await accountClient.generateToken(user.login, user.password);
   
     expect(tokenResponse.status).toBe("Success");
 });
