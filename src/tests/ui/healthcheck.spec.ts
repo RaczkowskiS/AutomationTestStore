@@ -1,8 +1,6 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../../pages/home.page';
+import { test } from '../../fixtures/base';
 
-test('should open automationteststore page successfully', async ({ page }) => {
-  const home = new HomePage(page);
-  await home.open();
-  await home.expectLoaded();
+test('should open automationteststore page successfully', async ({ homePage }) => {
+  await homePage.open();
+  await homePage.expectLoaded();
 });

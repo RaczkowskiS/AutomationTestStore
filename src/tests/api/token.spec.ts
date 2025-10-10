@@ -1,10 +1,8 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../../fixtures/base';
 import { AccountClient } from '../../api/clients/account-client';
-import { RestClient } from '../../api/clients/rest-client';
 import { users } from '../../testdata/users'
 
-test('should generate token for existing user', async () => {
-    const restClient = await RestClient.create();
+test('should generate token for existing user', async ({ restClient }) => {
     const requestBody =
         {
             userName: users.user1.login,
@@ -22,8 +20,7 @@ test('should generate token for existing user', async () => {
     expect(body.status).toBe("Success");
 });
 
-test('should return status failed for not existing user', async () => {
-    const restClient = await RestClient.create();
+test('should return status failed for not existing user', async ({ restClient }) => {
     const requestBody =
         {
             userName: "fake-user",
@@ -41,8 +38,7 @@ test('should return status failed for not existing user', async () => {
     expect(body.status).toBe("Failed");
 });
 
-test('should return token model for existing user', async () => {
-    const accountClient = await AccountClient.create();
+test('should return token model for existing user', async ({ accountClient }) => {
     const user = users.user1;
     const tokenResponse = await accountClient.generateToken(user.login, user.password);
   
