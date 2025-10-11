@@ -6,6 +6,7 @@ test('should successfully upload file', async ({ page, uploadPage }) => {
     
     await page.getByRole("button", { name: "Choose File" }).click();
     const fileChooser = await fileChoosePromise;
-    await fileChooser.setFiles(path.resolve(__dirname) + "\\..\\..\\resources\\test.txt");
+    const resourcesDir = path.join(process.cwd(), "resources");
+    await fileChooser.setFiles(resourcesDir + "\\test.txt");
     await page.getByRole("button", { name: "submit" }).click();
 });
