@@ -6,15 +6,24 @@ import { defineConfig } from '@playwright/test';
 export default defineConfig({
   testDir: 'src/tests',
   reporter: 'list',
+  fullyParallel: false,
   use: {
-    trace: 'retain-on-failure',
-    baseURL: process.env.APP_BASE_URL,
-    headless: false,
+    trace: 'on-first-retry',
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
+    baseURL: process.env.APP_BASE_URL
   },
   projects: [
     {
-      name: 'Chrome',
-      use: { browserName: 'chromium', channel: 'chrome' },
+      name: 'chrome',
+      use: { 
+        browserName: 'chromium',
+        channel: 'chrome',
+        viewport: { width: 1920, height: 1080}
+      },
+    },
+    {
+      name: "no.browser"
     }
   ],
 });

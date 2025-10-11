@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "api": "npx playwright test tests/api/token.spec.ts --project=no.browser",
+    "login": "npx playwright test tests/ui/login.spec.ts --project=chrome --headed",
+    "login.remote": "npx playwright test tests/ui/login.spec.ts --project=chrome"
   },
   "keywords": [],
   "author": "",
