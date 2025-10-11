@@ -1,9 +1,9 @@
-name: API CI
+name: UI CI
 
 env:
-  USER1_LOGIN: ${{ secrets.USER1_LOGIN }}
-  USER1_PASSWORD: ${{ secrets.USER1_PASSWORD }}
-  USER1_NAME: ${{ secrets.USER1_NAME }}
+  USER2_LOGIN: ${{ secrets.USER2_LOGIN }}
+  USER2_PASSWORD: ${{ secrets.USER2_PASSWORD }}
+  USER2_NAME: ${{ secrets.USER2_NAME }}
 
 on:
   push:
@@ -28,8 +28,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+    - run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npm run api 
+      run: npm run login.remote 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
