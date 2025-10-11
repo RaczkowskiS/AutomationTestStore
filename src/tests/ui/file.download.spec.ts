@@ -8,9 +8,9 @@ test('should successfully download file', async ({ page }) => {
     await page.getByRole("link", { name: "testing_edge.docx" }).click();
     const download = await downloadPromise;
 
-    const resourcesDir = path.join(process.cwd(), "resources");
+    const resourcesDir = path.join(process.cwd(), "resources/downloads");
     const filePath = path.join(resourcesDir, download.suggestedFilename());
     await download.saveAs(filePath);
-    
+
     await expect(fs.access(filePath)).resolves.toBeUndefined();
 });
