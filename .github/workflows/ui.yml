@@ -1,6 +1,9 @@
 name: UI CI
 
 env:
+  USER1_LOGIN: ${{ secrets.USER1_LOGIN }}
+  USER1_PASSWORD: ${{ secrets.USER1_PASSWORD }}
+  USER1_NAME: ${{ secrets.USER1_NAME }}
   USER2_LOGIN: ${{ secrets.USER2_LOGIN }}
   USER2_PASSWORD: ${{ secrets.USER2_PASSWORD }}
   USER2_NAME: ${{ secrets.USER2_NAME }}
