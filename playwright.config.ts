@@ -6,11 +6,12 @@ import { url } from './src/testdata/url'
 
 export default defineConfig({
   testDir: 'src/tests',
-  reporter: 'list',
+  reporter: 'html',
   fullyParallel: false,
+  
   use: {
     trace: 'on-first-retry',
-    screenshot: "only-on-failure",
+    screenshot: "on",
     video: "retain-on-failure",
     baseURL: url.app_base_url
   },
