@@ -6,7 +6,11 @@
   "scripts": {
     "api": "npx playwright test tests/api/token.spec.ts --project=no.browser",
     "login": "npx playwright test tests/ui/login.spec.ts --project=chrome --headed",
-    "login.remote": "npx playwright test tests/ui/login.spec.ts --project=chrome"
+    "login.remote": "npx playwright test tests/ui/login.spec.ts --project=chrome",
+    "upload": "npx playwright test tests/ui/file.upload.spec.ts --project=chrome --headed",
+    "upload.remote": "npx playwright test tests/ui/file.upload.spec.ts --project=chrome",
+    "download": "npx playwright test tests/ui/file.download.spec.ts --project=chrome --headed",
+    "download.remote": "npx playwright test tests/ui/file.download.spec.ts --project=chrome"
   },
   "keywords": [],
   "author": "",

@@ -3,8 +3,8 @@ import { Page, expect } from '@playwright/test';
 export abstract class BasePage {
   constructor(protected readonly page: Page) {}
 
-  async open(path: string = '/'): Promise<void> {
-    await this.page.goto(path);
+  async open(url: string, path: string = '/'): Promise<void> {
+    await this.page.goto(url + path);
   }
 
   async expectLoaded(): Promise<void> {

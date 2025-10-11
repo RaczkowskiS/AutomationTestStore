@@ -1,10 +1,10 @@
 import { expect } from '@playwright/test';
 
-import { BasePage } from './base.page';
-import { Routes } from '../config/routes';
+import { AtsBasePage } from './ats.base.page';
+import { Routes } from '../../config/routes';
 
-export class HomePage extends BasePage {
-  static readonly path = Routes.home;
+export class HomePage extends AtsBasePage {
+  static readonly path = Routes.ats.home;
 
   async open(): Promise<void> {
     await super.open(HomePage.path);
