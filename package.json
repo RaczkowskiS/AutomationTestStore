@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "api": "npx playwright test tests/api/token.spec.ts --project=no.browser",
+    "api": "npx playwright test tests/api/* --project=no.browser",
+    "ui": "npx playwright test tests/ui/* --project=chrome --headed",
+    "ui.remote": "npx playwright test tests/ui/* --project=chrome",
+
     "login": "npx playwright test tests/ui/login.spec.ts --project=chrome --headed",
     "login.remote": "npx playwright test tests/ui/login.spec.ts --project=chrome",
     "upload": "npx playwright test tests/ui/file.upload.spec.ts --project=chrome --headed",
