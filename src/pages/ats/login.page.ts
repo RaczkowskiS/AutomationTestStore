@@ -38,7 +38,7 @@ export class LoginPage extends AtsBasePage {
         await loginInputElement.fill(login);
         await passwordInputElement.fill(password);
         await submitButtonElement.click();
-
+        
         if (opts.expect === 'success') {
             const homePage = new HomePage(this.page);
             homePage.expectLoaded;
