@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 import { defineConfig } from '@playwright/test';
+import { url } from './src/testdata/url'
 
 export default defineConfig({
   testDir: 'src/tests',
@@ -11,7 +12,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: "only-on-failure",
     video: "retain-on-failure",
-    baseURL: process.env.APP_BASE_URL
+    baseURL: url.app_base_url
   },
   projects: [
     {

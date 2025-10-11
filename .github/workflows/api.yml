@@ -1,5 +1,13 @@
 name: API CI
 
+env:
+  USER1_LOGIN: ${{ secret.USER1_LOGIN }}
+  USER1_PASSWORD: ${{ secret.USER1_PASSWORD }}
+  USER1_NAME: ${{ secret.USER1_NAME }}
+  USER2_LOGIN: ${{ secret.USER2_LOGIN }}
+  USER2_PASSWORD: ${{ secret.USER2_PASSWORD }}
+  USER2_NAME: ${{ secret.USER2_NAME }}
+
 on:
   push:
     branches: [ "main" ]
