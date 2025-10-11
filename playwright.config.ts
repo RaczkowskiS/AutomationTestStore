@@ -10,7 +10,7 @@ export default defineConfig({
   fullyParallel: false,
   use: {
     trace: 'on-first-retry',
-    screenshot: "only-on-failure",
+    screenshot: "on",
     video: "retain-on-failure",
     baseURL: url.app_base_url
   },
