@@ -3,14 +3,20 @@ import fs from "fs/promises";
 import path from "path"
  
 test('should successfully download file', async ({ page }) => {
-    await page.goto('https://the-internet.herokuapp.com/download');
-    const downloadPromise = page.waitForEvent("download");
-    await page.getByRole("link", { name: "testing_edge.docx" }).click();
-    const download = await downloadPromise;
+    await test.step('Open herokuapp page', async () => {
+        await page.goto('https://the-internet.herokuapp.com/download');
+    });
 
-    const resourcesDir = path.join(process.cwd(), "resources/downloads");
-    const filePath = path.join(resourcesDir, download.suggestedFilename());
-    await download.saveAs(filePath);
+    await test.step('Dwonload file', async () => {
+        const [download] = await Promise.all([
+            page.waitForEvent("download"),
+            page.getByRole("link", { name: "some-file.txt" }).click()
+        ]);
 
-    await expect(fs.access(filePath)).resolves.toBeUndefined();
+        const resourcesDir = path.join(process.cwd(), "resources/downloads");
+        const filePath = path.join(resourcesDir, download.suggestedFilename());
+        await download.saveAs(filePath);
+
+        await expect(fs.access(filePath)).resolves.toBeUndefined();
+    });
 });
