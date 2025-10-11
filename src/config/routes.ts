@@ -1,4 +1,10 @@
 export const Routes = {
-  home: '/',
-  login: '/index.php?rt=account/login',
+  ats: {
+    home: '/',
+    login: '/index.php?rt=account/login'
+  },
+  atc: {
+    home: '/',
+    upload: '/fileupload.html'
+  }
 } as const;
