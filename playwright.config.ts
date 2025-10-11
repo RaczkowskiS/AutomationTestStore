@@ -6,8 +6,9 @@ import { url } from './src/testdata/url'
 
 export default defineConfig({
   testDir: 'src/tests',
-  reporter: 'list',
+  reporter: 'html',
   fullyParallel: false,
+  
   use: {
     trace: 'on-first-retry',
     screenshot: "on",
