@@ -15,8 +15,26 @@ export async function connectToDatabase() {
         console.log("Connected to the database");
     } catch (error) {
         console.error("Error connection to the db", error);
-    } finally {
+    }
+}
+
+export async function closeConnection() {
+    try {
         await client.end();
-        console.log("Db connection closed");
+        console.log("Closed connection to the database");
+    } catch (error) {
+        console.error("Error closing db", error);
+    }
+}
+
+export async function executeQuery(
+    query: string,
+    params?: any[]
+): Promise<any> {
+    try {
+        const res = await client.query(query, params);
+        return res;
+    } catch (error) {
+        console.error("Error executing query: ", error);
     }
 }
