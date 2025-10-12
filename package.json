@@ -5,15 +5,17 @@
   "main": "index.js",
   "scripts": {
     "api": "npx playwright test src/tests/api/* --project=no.browser",
-    "ui": "npx playwright test src/tests/ui/* --project=chrome --headed",
-    "ui.remote": "npx playwright test src/tests/ui/* --project=chrome",
+    "hc": "npx playwright test src/tests/ui/hc/* --project=ats-chrome --headed",
+    "hc.remote": "npx playwright test src/tests/ui/hc/* --project=ats-chrome",
+    "ui": "npx playwright test src/tests/ui/regression/* --project=chrome --headed",
+    "ui.remote": "npx playwright test src/tests/ui/regression/* --project=chrome",
 
-    "login": "npx playwright test src/tests/ui/login.spec.ts --project=chrome --headed",
-    "login.remote": "npx playwright test src/tests/ui/login.spec.ts --project=chrome",
-    "upload": "npx playwright test src/tests/ui/file.upload.spec.ts --project=chrome --headed",
-    "upload.remote": "npx playwright test src/tests/ui/file.upload.spec.ts --project=chrome",
-    "download": "npx playwright test src/tests/ui/file.download.spec.ts --project=chrome --headed",
-    "download.remote": "npx playwright test src/tests/ui/file.download.spec.ts --project=chrome"
+    "login": "npx playwright test src/tests/ui/regression/login.spec.ts --project=chrome --headed",
+    "login.remote": "npx playwright test src/tests/ui/regression/login.spec.ts --project=chrome",
+    "upload": "npx playwright test src/tests/ui/regression/file.upload.spec.ts --project=chrome --headed",
+    "upload.remote": "npx playwright test src/tests/ui/regression/file.upload.spec.ts --project=chrome",
+    "download": "npx playwright test src/tests/ui/regression/file.download.spec.ts --project=chrome --headed",
+    "download.remote": "npx playwright test src/tests/ui/regression/file.download.spec.ts --project=chrome"
   },
   "keywords": [],
   "author": "",

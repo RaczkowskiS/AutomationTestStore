@@ -27,4 +27,9 @@ export class HomePage extends AtsBasePage {
     
     return false;
   }
+
+  async isUserAlreadyLoggedIn(userName: string): Promise<boolean> {
+    const userWelcomeElement = this.page.locator(`text=Welcome back ${userName}`);
+    return await userWelcomeElement.isVisible();
+  }
 }

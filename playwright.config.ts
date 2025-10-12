@@ -2,7 +2,6 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 import { defineConfig } from '@playwright/test';
-import { url } from './src/testdata/url'
 
 export default defineConfig({
   testDir: 'src/tests',
@@ -15,6 +14,17 @@ export default defineConfig({
     video: "retain-on-failure"
   },
   projects: [
+    { name: "setup", testMatch: /.*\.setup\.ts/ },
+    {
+      name: 'ats-chrome',
+      use: { 
+        browserName: 'chromium',
+        channel: 'chrome',
+        storageState: ".auth/user.json",
+        viewport: { width: 1920, height: 1080}
+      },
+      dependencies: ["setup"]
+    },
     {
       name: 'chrome',
       use: { 

@@ -37,4 +37,13 @@ export const test = base.extend<Fixtures>({
     },
 });
 
+export const setup = base.extend<Fixtures>({
+    loginPage: async ({page}, use) => {
+        const loginPage = new LoginPage(page);
+        await loginPage.open();
+        await loginPage.expectLoaded();
+        await use(loginPage);
+    }
+});
+
 export const expect = exp;

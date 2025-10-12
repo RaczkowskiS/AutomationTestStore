@@ -1,4 +1,4 @@
-import { test } from '../../fixtures/base';
+import { test } from '../../../fixtures/base';
 import path from "path";
 
 test('should successfully upload file', async ({ page, uploadPage }) => {

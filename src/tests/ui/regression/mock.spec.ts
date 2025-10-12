@@ -43,6 +43,4 @@ test("mock BookStore API response", async ({ page }) => {
     await expect(
         page.locator("text=Sebastian Raczkowski")
     ).toBeVisible();
-
-    await page.pause();
 });
