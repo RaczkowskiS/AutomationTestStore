@@ -1,11 +1,15 @@
 import { test, expect } from "@playwright/test"
 import { connectToDatabase, closeConnection, executeQuery } from "../infrastructure/db"
 
-test("database connection test", async({}) => {
-    await test.step('Connect to db', async () => {
-        await connectToDatabase();
-    });
+test.beforeAll(async() => {
+    await connectToDatabase();
+});
 
+test.afterAll(async() => {
+    await closeConnection();
+});
+
+test("database connection test", async({}) => {
     await test.step('Create table', async () => {
         await executeQuery(
             `CREATE TABLE IF NOT EXISTS users (
@@ -31,9 +35,5 @@ test("database connection test", async({}) => {
 
     await test.step('Drop table', async () => {
         await executeQuery(`DROP TABLE users;`);
-    });
-
-    await test.step('Close db connection', async () => {
-        await closeConnection();
     });
 });
