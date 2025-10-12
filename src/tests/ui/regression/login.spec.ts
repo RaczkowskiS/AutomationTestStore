@@ -1,6 +1,6 @@
-import { test, expect } from '../../fixtures/base';
-import { HomePage } from '../../pages/ats/home.page';
-import { users } from '../../testdata/users'
+import { test, expect } from '../../../fixtures/base';
+import { HomePage } from '../../../pages/ats/home.page';
+import { users } from '../../../testdata/users'
 
 test('should login existing user successfully', async ({ loginPage, page }) => {
     let homePage: HomePage;

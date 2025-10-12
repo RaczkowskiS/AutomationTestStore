@@ -1,0 +1,39 @@
+name: HC CI
+
+env:
+  USER2_LOGIN: ${{ secrets.USER2_LOGIN }}
+  USER2_PASSWORD: ${{ secrets.USER2_PASSWORD }}
+  USER2_NAME: ${{ secrets.USER2_NAME }}
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npx playwright install --with-deps
+    - name: Run Playwright tests
+      run: npm run hc.remote 
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 10
