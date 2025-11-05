@@ -23,7 +23,6 @@ export default defineConfig({
       name: 'ats-chrome',
       use: { 
         browserName: 'chromium',
-        channel: 'chrome',
         storageState: ".auth/user.json",
         viewport: { width: 1920, height: 1080}
       },
@@ -33,7 +32,6 @@ export default defineConfig({
       name: 'chrome',
       use: { 
         browserName: 'chromium',
-        channel: 'chrome',
         viewport: { width: 1920, height: 1080}
       },
     },
